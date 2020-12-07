@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - feature/pipeline
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -10,12 +11,10 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      - name: Set Docker image version
-        run: cat VERSION >> $VERSION
-      - name: Push to Docker Hub
-        uses: docker/build-push-action@v1
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
         with:
           username: away168
           password: ${{ secrets.DOCKER_AWAY168 }}
-          repository: away168/rps
-          tags: away168/rps:${VERSION}
+      - name: Push to Docker Hub
+        run: ./scripts/docker-build.sh
