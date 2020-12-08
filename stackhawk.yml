@@ -1,4 +1,4 @@
 app:
-  applicationId: 6e608071-6a3f-4b35-ad53-ff162c304be9
+  applicationId: 82f6ddf8-f8a8-4cc5-8f11-73ce7a526677
   host: ${APP_HOST:http://rps.dev}
   env: ${APP_ENV:Development}
