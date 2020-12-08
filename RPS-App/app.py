@@ -12,6 +12,10 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 username = os.getenv('RPS_USER', "RPS Master")
 version = os.getenv('RPS_VERSION', "alpha")
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html', title='404'), 404
+
 @app.route('/')
 def hello():
     print (username)
@@ -22,6 +26,8 @@ def hello():
 def compete():
     print (username)
     print (version)
+    if request.args.get('gesture') not in ['0', '1', '2', None]:
+        return page_not_found(404)
     playerGesture = gestureMap(request.args.get('gesture', random.randint(0, 2), type=int))
     print (playerGesture)
     computerGesture = gestureMap(random.randint(0, 2))
