@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: rps
   annotations: 
-    dns.details.html.spinnaker.io="<a href='https://${parameters.dns}.se.armory.io'>${parameters.dns}.se.armory.io</a>"
+    dns.details.html.spinnaker.io: "<a href='https://${parameters.dns}.se.armory.io'>${parameters.dns}.se.armory.io</a>"
 spec:
   replicas: 1
   selector:
