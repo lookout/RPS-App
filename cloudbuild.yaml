@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--no-cache', '-t', '${_REGISTRY}/${_PROJECT}/${_REPOSITORY}/${_IMAGE_NAME}:${_TAG}', '.']
+images: ['${_REGISTRY}/${_PROJECT}/${_REPOSITORY}/${_IMAGE_NAME}:${_TAG}']
+logsBucket: gs://infosec-container-cloud-build-bucket 
