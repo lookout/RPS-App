@@ -1,6 +1,4 @@
-FROM ubuntu:18.04
-
-LABEL maintainer="andrew.way@armory.io"
+FROM gcr.io/lke-pprd-image-factory-abcde/trusted/lookout-base/bionic-infosec:latest
 
 RUN apt-get update -y && \
     apt-get install -y python-pip python-dev
